@@ -1,0 +1,59 @@
+{
+    "decrypt_and_extract": {
+        "decrypt_secret_id": "nexidia_decryption_passphrase",
+        "bucket_name": "tte-eid-d-gcs-nexidia-stage",
+        "project_id": "eid-dw-dev-a5cf",
+        "secret_key_file_path": "tte-eid-d-gcs-temp-nexidia-files/Nexidia_Key/Nexidia_Secret.gpg",
+        "decrypt_secret_version": "latest",
+        "secret_id": "nexidia_ftp_credential",
+        "next_topic": "gcs_to_bq"
+    },
+    "dlp_data_catalog": {
+        "project_id": "eid-dw-dev-a5cf",
+        "location": "global",
+        "input_bucket": "tte-eid-d-gcs-nexidia-stage",
+        "min_likelihood": "POSSIBLE",
+        "tag_template": "ttec_dlp_revised",
+        "output_dataset": "EdwOdsStage",
+        "output_table": "DLP_Results",
+        "tag_project": "eid-dw-dev-a5cf",
+        "tag_dataset": "EdwOds",
+        "output_project_id": "eid-dw-dev-a5cf",
+        "next_topic": "tag_results"
+    },
+    "gcs_to_bq": {
+        "project_id": "eid-dw-dev-a5cf",
+        "input_bucket": "tte-eid-d-gcs-nexidia-stage",
+        "staging_dataset": "EdwOdsStage",
+        "ods_dataset": "EdwOds",
+        "metadata-file": "add_metadata.sql",
+        "next_topic": "dlp_data_catalog"
+    },
+
+    "sftp_file_extractor": {
+        "project_id": "eid-dw-dev-a5cf",
+        "secret_id": "nexidia_ftp_credential",  
+        "next_topic": "sftp_file_process",
+        "hostname": "128.136.62.6",
+        "sftp_port": "22",
+        "username": "ftpuser1072",
+	    "sftp_path": "/DEU_TEU"
+    },
+    "sftp_file_process": {
+        "project_id": "eid-dw-dev-a5cf",
+        "secret_id": "nexidia_ftp_credential",
+        "output_bucket": "tte-eid-d-gcs-nexidia-stage",
+        "next_topic": "decrypt_and_extract",
+        "hostname": "128.136.62.6",
+        "sftp_port": "22",
+        "username": "ftpuser1072",
+	    "sftp_path": "/DEU_TEU"
+    },
+    "tag_results": {
+        "project_id": "eid-dw-dev-a5cf",
+        "location": "global",
+        "liklihood_vars": ["LIKELY", "VERY_LIKELY", "POSSIBLE"],
+        "tag_template": "dlp_ttec_revised"
+    }
+
+}

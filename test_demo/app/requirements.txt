@@ -1,0 +1,16 @@
+google-cloud-storage==2.5.0
+python-gnupg==0.5.0
+google-cloud-secret-manager==2.11.0
+google-cloud-logging==3.1.1
+paramiko==2.12.0
+google-cloud-bigquery==2.34.4
+flask
+google-cloud-pubsub
+google-cloud-dlp
+google-cloud-datacatalog==3.9.3
+gunicorn
+fsspec
+gcsfs
+pandas
+pyarrow
+pandas-gbq

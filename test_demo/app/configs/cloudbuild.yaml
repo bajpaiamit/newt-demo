@@ -1,0 +1,13 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build',
+         '--build-arg',
+         "build_env=${_ENV}",
+         '-t',
+         '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_DOCKER_REPO}/${_ENV}:tag1',
+         '.']
+images:
+       - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_DOCKER_REPO}/${_ENV}:tag1'
+
+options:
+  logging: CLOUD_LOGGING_ONLY

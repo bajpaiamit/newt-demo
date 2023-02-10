@@ -1,0 +1,31 @@
+steps:
+# Terraform init
+- id: 'tf init'
+  name: 'hashicorp/terraform:1.0.0'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+      echo "########## TERRAFORM INIT #############"
+      terraform init
+# Terraform plan
+- id: 'tf plan'
+  name: 'hashicorp/terraform:1.0.0'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+      echo "########## TERRAFORM PLAN #############"
+      terraform plan
+#Terraform apply
+- id: 'tf apply'
+  name: 'hashicorp/terraform:1.0.0'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+      echo "########## TERRAFORM APPLY #############"
+      terraform apply -auto-approve
+timeout: 2400s
+options:
+  logging: CLOUD_LOGGING_ONLY
