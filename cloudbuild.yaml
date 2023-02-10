@@ -4,7 +4,7 @@ steps:
          '--build-arg',
          "build_env=${_ENV}",
          '-t',
-         '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_DOCKER_REPO}/${_ENV}:tag1','-f', './app', '.']
+         '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_DOCKER_REPO}/${_ENV}:tag1','-f', './app/Dockerfile', '.']
 images:
        - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_DOCKER_REPO}/${_ENV}:tag1'
 
