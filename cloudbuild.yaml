@@ -14,7 +14,7 @@ options:
 
 
   substitutions:
-  _ENV:"hello"
+  _ENV: "hello"
   _REGION: "us-central1"
   _DOCKER_REPO: "cloud-run-repo"
   _PROJECT_ID: "noc-test-project"
