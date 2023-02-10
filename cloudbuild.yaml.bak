@@ -12,8 +12,7 @@ images:
 options:
   logging: CLOUD_LOGGING_ONLY
 
-/*
-steps:
+/*steps:
 # Terraform init
 - id: 'tf init'
   name: 'hashicorp/terraform:1.0.0'
@@ -44,7 +43,7 @@ steps:
 timeout: 2400s
 options:
   logging: CLOUD_LOGGING_ONLY
-*/
+  */
   substitutions:
   _ENV:"hello"
   _REGION: "us-central1"
