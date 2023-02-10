@@ -9,12 +9,12 @@ steps:
 images:
        - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_DOCKER_REPO}/${_ENV}:tag1'
 
-  substitutions:
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+substitutions:
   _PROJECT_ID: "noc-test-project"
   _ENV: "hello"
   _REGION: "us-central1"
   _DOCKER_REPO: "cloud-run-repo"
- 
-
-  options:
-   logging: CLOUD_LOGGING_ONLY 
+  
