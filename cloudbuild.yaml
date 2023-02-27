@@ -1,0 +1,12 @@
+steps:
+- name: 'hashicorp/terraform:1.0.8'
+  entrypoint: 'sh'
+  args:
+    - '-c'
+    - |
+      terraform init
+      terraform plan \
+        -var-file=terraform_qa.tfvars \
+        -var-file=terraform_dev.tfvars \
+        -out=tfplan
+      terraform apply -auto-approve tfplan
