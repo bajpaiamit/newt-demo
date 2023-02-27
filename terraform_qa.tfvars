@@ -1,2 +1,2 @@
-project = "noc-test-project"
+project = "shoptrue-gke"
 location = "us-central1"

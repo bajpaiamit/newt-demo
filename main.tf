@@ -1,8 +1,8 @@
 resource "google_cloud_run_service" "service" {
-  project = "noc-test-project"
+  project = var.project_id
   count = length(var.services)
   name     = var.services[count.index].name
-  location = "us-central1"
+  location = var.location
   
   metadata {
     annotations = {
